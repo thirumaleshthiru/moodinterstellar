@@ -16,7 +16,7 @@ CREATE TABLE users (
     total_likes INT DEFAULT 0,
     last_task_date DATE DEFAULT NULL,
     profession ENUM('student','employee') NOT NULL,
-    is_surevy_completed BOOLEAN DEFAULT FALSE
+    is_survey_completed BOOLEAN DEFAULT FALSE
 );
 
 -- Tasks table
@@ -30,6 +30,18 @@ CREATE TABLE tasks (
     people_who_completed INT DEFAULT 0
 );
 
+-- Categories table
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(255) NOT NULL
+);
+
+-- Tags table
+CREATE TABLE tags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tag_name VARCHAR(255) NOT NULL
+);
+
 -- Stories table
 CREATE TABLE stories (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -38,16 +50,19 @@ CREATE TABLE stories (
     story_content TEXT NOT NULL,
     story_cover_image LONGBLOB,
     story_category INT NOT NULL,
-    story_tags INT NOT NULL,
     likes INT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (story_category) REFERENCES categories(id) ON DELETE CASCADE,
-    FOREIGN KEY (story_tags) REFERENCES tags(id) ON DELETE CASCADE
+    FOREIGN KEY (story_category) REFERENCES categories(id) ON DELETE CASCADE
 );
 
- 
-
- 
+-- Story Tags junction table
+CREATE TABLE story_tags (
+    story_id INT NOT NULL,
+    tag_id INT NOT NULL,
+    PRIMARY KEY (story_id, tag_id),
+    FOREIGN KEY (story_id) REFERENCES stories(id) ON DELETE CASCADE,
+    FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
+);
 
 -- Beginning Questions table
 CREATE TABLE beginning_questions (
@@ -83,18 +98,6 @@ CREATE TABLE following (
     FOREIGN KEY (following_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Categories table
-CREATE TABLE categories (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    category_name VARCHAR(255) NOT NULL
-);
-
--- Tags table
-CREATE TABLE tags (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    tag_name VARCHAR(255) NOT NULL
-);
-
 -- Likes table
 CREATE TABLE likes (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -103,14 +106,14 @@ CREATE TABLE likes (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (story_id) REFERENCES stories(id) ON DELETE CASCADE
 );
- 
-create table delete_reasons(
+
+-- Delete Reasons table
+CREATE TABLE delete_reasons (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    reason TEXT NOT NULl,
+    reason TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-)
-
+);
 
 -- User Performance Statistics table
 CREATE TABLE user_performance_statistics (
@@ -122,10 +125,10 @@ CREATE TABLE user_performance_statistics (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- User Performance Statistics table
+-- Keywords table
 CREATE TABLE keywords (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    recomend_percent_start int not null,
-    recomend_percent_end not null
-    keyword varchar(60)
+    recommend_percent_start INT NOT NULL,
+    recommend_percent_end INT NOT NULL,
+    keyword VARCHAR(60) NOT NULL
 );
