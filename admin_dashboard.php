@@ -28,7 +28,6 @@ function generateFooter() {
     <title>Admin Dashboard</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -52,11 +51,15 @@ function generateFooter() {
                     <a href="manage_keywords.php" class="list-group-item list-group-item-action">Manage Keywords</a>
                     
                     <a href="admin_manage_stories.php" class="list-group-item list-group-item-action">Manage Stories</a>
-                 </div>
+
+                    <!-- New Links -->
+                    <a href="add_category.php" class="list-group-item list-group-item-action">Add Category</a>
+                    <a href="manage_categories.php" class="list-group-item list-group-item-action">Manage Categories</a>
+                </div>
             </div>
             <div class="col-md-9">
                 <h4>Welcome to the Admin Dashboard</h4>
-                <p>From this dashboard, you can manage tasks, questions, keywords, users stories. Use the links on the left to navigate through the admin functions.</p>
+                <p>From this dashboard, you can manage tasks, questions, keywords, user stories, and categories. Use the links on the left to navigate through the admin functions.</p>
             </div>
         </div>
     </div>
@@ -64,7 +67,7 @@ function generateFooter() {
     <?php generateFooter(); ?>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

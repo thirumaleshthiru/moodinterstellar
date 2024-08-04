@@ -36,6 +36,9 @@ if (isset($_SESSION['user_id'])) {
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="logout.php">Logout</a>
                 </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="stories.php">Stories</a>
+                </li>
                 <?php if ($profile_pic_url): ?>
                     <!-- Profile Picture -->
                     <li class="nav-item d-none d-md-block mx-2">

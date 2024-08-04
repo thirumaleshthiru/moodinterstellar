@@ -129,15 +129,15 @@ CREATE TABLE delete_reasons (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- User Performance Statistics table
-CREATE TABLE user_performance_statistics (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+ CREATE TABLE user_tasks (
     user_id INT NOT NULL,
-    date DATE NOT NULL,
-    tasks_completed INT DEFAULT 0,
-    mental_score INT DEFAULT 0,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    task_id INT NOT NULL,
+    assignment_date DATETIME DEFAULT NULL,
+    PRIMARY KEY (user_id, task_id),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE
 );
+
 
 -- Keywords table
 CREATE TABLE keywords (
