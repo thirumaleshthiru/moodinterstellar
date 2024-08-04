@@ -1,0 +1,24 @@
+ 
+  
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+ /* Ensure that the brand (logo) is on the left and other items are on the right */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}

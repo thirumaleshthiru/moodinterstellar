@@ -1,0 +1,53 @@
+index.php(home page where space is shown for that specific login person otherwise go to login.php)
+statistics.php(shows all the progress of the user mental health for all the users login or without login)
+register.php(along with otp verification)
+login.php
+logout.php
+dbconnection.php(use mysqli to create connection)
+navbar.php
+footer.php
+chatbot.php
+survey.php(where we ask begining questions to know the percentage of user in mental health)
+
+
+followers.php
+following.php
+follow.php(to follow and unfollow the user)
+like.php(to like or dislike the story)
+complete.php(this will tell that the task or completed that we given)
+
+profile.php(shows the users profile with links to add story,mystories, update profile, statistics)
+stories.php(shows all the aritlcles with search bar and filter system)
+addstory.php(to create a story)
+mystories.php(shows all the stories that the login user has been created along with update and delete button)
+update_story.php
+delte_story.php
+deleted_submissions.php(shows the reasons of why their story or resource got deleted if any go deleted)
+
+ 
+add_task.php(admin will add a task along with other details)
+mange_tasks.php
+delete_task.php
+update_task.php
+
+add_begin_questions.php(admin will add begining questions)
+mange_begin_question.php
+delete_begin_question.php
+update_begin_question.php
+
+add_journey_questions.php(admin will add journey questions)
+mange_journey_questions.php
+delete_journey_question.php
+update_journey_question.php
+
+add_keyword.php(admin will add a keyword)
+mange_keywords.php(admin will managekeyords)
+ 
+
+admin_dashobard.php(we show all the links to add task, add yoga, add mental health, add begining question, add journey question and manage them )
+admin_mange_stories(shows all the stories with a delete button to delete users stories that mislead)
+admin_manage_resources(shows all the stories with a delete to delete users resources that mislead)
+ 
+
+
+suggestions.php(this will take keyword from the url and use some apis to recomend some resource)

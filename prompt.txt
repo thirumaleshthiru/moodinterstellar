@@ -1,0 +1,72 @@
+I and my team are participating in a google competition. 
+So our ideas is to make a web application with php. The idea is about to help the people to maintain the mental health.
+
+The ideas is:
+    A web app with space theme which has user info about the mental state percentage(based on beginining questions we ask), mile stone(30), current postion(default is 0).
+    that means users is in a space ship and we ask some questions based on that the space ship is moving to some front in light speed and it shows 
+    a planet infront  in the space when we click on that it will dispaly like this:
+   
+    - dialog box will be open and then shows the 3 taks that they will do and three buttons(only one day is passed it will show to ensure that the users are take time to finish) for each which is 
+    (Complete) when all the complete (each have 0.3 and last have 0.4 preferecnce) and then only i mean only move if all completed it increment the mental stage percentage, and current postion
+    and it moves again to the fron with light speed and again it reapeats until we reach the mile stone then we show a congratulations window 
+    and shows a reset button when reset automatically reset these values :  mental state percentage(based on questions we ask), mile stone(30), current postion(default is 0).
+
+     -  and along with some random 5 spacesips will appear when we click on them a dialog box will open and then it shows that user with the same percentage as the user along with follow and other buttons when we click on them it will take them to his profilepage
+     - and in right side a button like suggestions   dialog box is open and show the suggestions(aritlcles(stories), yoga exercises, mental tips, and more button)
+
+    So this is task now please make some sql query to  create tables with this info and bu default add id to where it needs for the tables and 
+    must add the on delete cascade so it delete all the user related if deleted the user or anyting related to user without any wrong:
+  
+    users:
+        name
+        email
+        password
+        profile_pic(LONGBLOB)
+        role ENUM('user', 'admin') NOT NULL DEFAULT 'user'
+        pending verification(boolean whether user is verified with otp)
+        milestone (default 30)
+        current_postioin(default 0)
+        mental_score_percentage(based on the quiz we ask)
+        is_reset(boolean default will be false)
+        followers
+        following
+        total_likes(the total likes he got from the stories)
+    taks:
+        task name
+        task description
+        task output(it said what will happen when we do that task)
+        task_recomondation_start(we recomend to the users based on the user mental state percentage for example(60))
+        task_recomondation_end(we recomend to the users based on the user mental state percentage for example(80) so it wil recomend to 60 to 80 percentage users)
+        people who completed this task (show the number of people who complete this task)
+    stories:
+        story title
+        story content(text)
+        story cover image
+        story_category(from category table)
+        story_tags(from tags table)
+        likes
+    mental tips:
+        mental tip
+        result of using that tip
+        tip recomend for start
+        tip recomend for end
+        likes
+    yoga:
+        yoga exercise
+        benifit of using that yoga
+        likes
+        category
+        yoga recomend for start
+        yoga recomend for end
+    begining_questions:
+        question
+        options(4 mcqs)
+        preferecnce
+    journey questions:(questions we ask to reach the milestone):
+        question
+        options
+        preferecnce
+    the remaining tables are followers, following, categories, tags,likes
+
+        
+
