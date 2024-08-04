@@ -67,18 +67,31 @@ CREATE TABLE story_tags (
 -- Beginning Questions table
 CREATE TABLE beginning_questions (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    question TEXT NOT NULL,
-    options JSON NOT NULL,
+    question TEXT NOT NULL
+);
+
+-- Beginning Question Options table
+CREATE TABLE beginning_question_options (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT NOT NULL,
+    option TEXT NOT NULL,
     preference DECIMAL(3,2) NOT NULL,
-    
+    FOREIGN KEY (question_id) REFERENCES beginning_questions(id) ON DELETE CASCADE
 );
 
 -- Journey Questions table
 CREATE TABLE journey_questions (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    question TEXT NOT NULL,
-    options JSON NOT NULL,
-    preference DECIMAL(3,2) NOT NULL
+    question TEXT NOT NULL
+);
+
+-- Journey Question Options table
+CREATE TABLE journey_question_options (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT NOT NULL,
+    option TEXT NOT NULL,
+    preference DECIMAL(3,2) NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES journey_questions(id) ON DELETE CASCADE
 );
 
 -- Followers table

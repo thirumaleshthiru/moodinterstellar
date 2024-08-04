@@ -41,13 +41,9 @@ function generateFooter() {
                 <div class="list-group">
                     <a href="add_task.php" class="list-group-item list-group-item-action">Add Task</a>
                     <a href="mange_tasks.php" class="list-group-item list-group-item-action">Manage Tasks</a>
-                    <a href="delete_task.php" class="list-group-item list-group-item-action">Delete Task</a>
-                    <a href="update_task.php" class="list-group-item list-group-item-action">Update Task</a>
                     
                     <a href="add_begin_questions.php" class="list-group-item list-group-item-action">Add Beginning Questions</a>
                     <a href="mange_begin_question.php" class="list-group-item list-group-item-action">Manage Beginning Questions</a>
-                    <a href="delete_begin_question.php" class="list-group-item list-group-item-action">Delete Beginning Questions</a>
-                    <a href="update_begin_question.php" class="list-group-item list-group-item-action">Update Beginning Questions</a>
                     
                     <a href="add_journey_questions.php" class="list-group-item list-group-item-action">Add Journey Questions</a>
                     <a href="mange_journey_questions.php" class="list-group-item list-group-item-action">Manage Journey Questions</a>
