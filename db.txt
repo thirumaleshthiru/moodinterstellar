@@ -69,7 +69,8 @@ CREATE TABLE beginning_questions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     question TEXT NOT NULL,
     options JSON NOT NULL,
-    preference DECIMAL(3,2) NOT NULL
+    preference DECIMAL(3,2) NOT NULL,
+    
 );
 
 -- Journey Questions table
