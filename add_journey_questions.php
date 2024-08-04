@@ -1,36 +1,36 @@
 <?php
 session_start();
-include 'db.php';  
+include 'db.php'; // Include the database connection
 
- 
+// Check if user is logged in and is an admin
 if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
     header("Location: login.php");
     exit();
 }
 
- 
+// Handle form submission for adding a new journey question
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_question'])) {
     $question = $_POST['question'];
-    $options = $_POST['options'];  
-    $preferences = $_POST['preferences'];  
+    $options = $_POST['options']; // Expecting an array of options
+    $preferences = $_POST['preferences']; // Array of preferences
 
-     
-    $stmt = $conn->prepare("INSERT INTO beginning_questions (question) VALUES (?)");
+    // Insert the question into the journey_questions table
+    $stmt = $conn->prepare("INSERT INTO journey_questions (question) VALUES (?)");
     $stmt->bind_param("s", $question);
     $stmt->execute();
     $question_id = $stmt->insert_id;
     $stmt->close();
 
-    // Insert options into the beginning_question_options table
+    // Insert options into the journey_question_options table
     foreach ($options as $index => $option) {
         $preference = $preferences[$index];
-        $stmt = $conn->prepare("INSERT INTO beginning_question_options (question_id, option, preference) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO journey_question_options (question_id, option, preference) VALUES (?, ?, ?)");
         $stmt->bind_param("iss", $question_id, $option, $preference);
         $stmt->execute();
         $stmt->close();
     }
 
-    header("Location: add_begin_questions.php?message=Question+added+successfully&message_type=success");
+    header("Location: add_journey_questions.php?message=Question+added+successfully&message_type=success");
     exit();
 }
 
@@ -50,7 +50,7 @@ function generateFooter() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Beginning Questions</title>
+    <title>Add Journey Questions</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -59,7 +59,7 @@ function generateFooter() {
     <?php generateNavbar(); ?>
 
     <div class="container mt-4">
-        <h2>Add Beginning Questions</h2>
+        <h2>Add Journey Questions</h2>
         <?php if (isset($_GET['message'])): ?>
             <div class="alert alert-<?php echo htmlspecialchars($_GET['message_type']); ?> alert-dismissible fade show" role="alert">
                 <?php echo htmlspecialchars($_GET['message']); ?>
@@ -68,7 +68,7 @@ function generateFooter() {
                 </button>
             </div>
         <?php endif; ?>
-        <form action="add_begin_questions.php" method="post">
+        <form action="add_journey_questions.php" method="post">
             <div class="form-group">
                 <label for="question">Question</label>
                 <textarea class="form-control" id="question" name="question" rows="3" required></textarea>

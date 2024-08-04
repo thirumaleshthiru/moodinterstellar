@@ -20,38 +20,39 @@ include 'db.php';
 
 // Check if user is already logged in
 if (isset($_SESSION['user_id']) || isset($_COOKIE['user_id'])) {
-$role = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : (isset($_COOKIE['user_role']) ? $_COOKIE['user_role'] : null);
+    $role = isset($_SESSION['user_role']) ? $_SESSION['user_role'] : (isset($_COOKIE['user_role']) ? $_COOKIE['user_role'] : null);
 
-if ($role === 'admin') {
-header("Location: admin_dashboard.php");
-} else {
-header("Location: dashboard.php");
-}
-exit();
+    if ($role === 'admin') {
+        header("Location: admin_dashboard.php");
+    } else {
+        header("Location: dashboard.php");
+    }
+    exit();
 }
 
 if (isset($_POST['register'])) {
-$name = mysqli_real_escape_string($conn, $_POST['name']);
-$email = mysqli_real_escape_string($conn, $_POST['email']);
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-$role = 'admin';
-$profilePic = null;
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $role = 'admin';
+    $profilePic = null;
+    $pendingVerification = true; // Set pending verification to true by default
 
-if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
-$profilePic = file_get_contents($_FILES['profile_pic']['tmp_name']);
-}
+    if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
+        $profilePic = file_get_contents($_FILES['profile_pic']['tmp_name']);
+    }
 
-$stmt = $conn->prepare("INSERT INTO users (name, email, password, profile_pic, role) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssss", $name, $email, $password, $profilePic, $role);
+    $stmt = $conn->prepare("INSERT INTO users (name, email, password, profile_pic, role, pending_verification) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssi", $name, $email, $password, $profilePic, $role, $pendingVerification);
 
-if ($stmt->execute()) {
-header("Location: admin_register.php?success=1");
-exit();
-} else {
-echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
-}
+    if ($stmt->execute()) {
+        header("Location: admin_register.php?success=1");
+        exit();
+    } else {
+        echo "<div class='alert alert-danger' role='alert'>Error: " . $stmt->error . "</div>";
+    }
 
-$stmt->close();
+    $stmt->close();
 }
 
 $conn->close();

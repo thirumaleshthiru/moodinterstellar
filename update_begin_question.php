@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_question'])) {
     }
 
     // Redirect to manage_begin_question.php with a success or error message
-    header("Location: mange_begin_question.php?message=" . urlencode($message) . "&message_type=" . urlencode($message_type));
+    header("Location: manage_begin_question.php?message=" . urlencode($message) . "&message_type=" . urlencode($message_type));
     exit();
 }
 
@@ -69,7 +69,7 @@ if ($id) {
     $options_result = $stmt->get_result();
     $options = $options_result->fetch_all(MYSQLI_ASSOC);
 } else {
-    header("Location: mange_begin_question.php");
+    header("Location: manage_begin_question.php");
     exit();
 }
 ?>

@@ -15,7 +15,7 @@ if (isset($_GET['delete_id'])) {
     $stmt->bind_param("i", $delete_id);
     $stmt->execute();
     $stmt->close();
-    header("Location: mange_begin_question.php?message=Question+deleted+successfully&message_type=success");
+    header("Location: manage_begin_question.php?message=Question+deleted+successfully&message_type=success");
     exit();
 }
 
@@ -82,7 +82,7 @@ function generateFooter() {
                         </td>
                         <td>
                             <a href="update_begin_question.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="mange_begin_question.php?delete_id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this question?');">Delete</a>
+                            <a href="manage_begin_question.php?delete_id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this question?');">Delete</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

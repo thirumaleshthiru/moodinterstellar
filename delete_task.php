@@ -18,16 +18,16 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     if ($stmt->execute()) {
         // Redirect to manage_tasks.php with success message
-        header("Location: mange_tasks.php?message=Task+deleted+successfully!&message_type=success");
+        header("Location: manage_tasks.php?message=Task+deleted+successfully!&message_type=success");
     } else {
         // Redirect to manage_tasks.php with error message
-        header("Location: mange_tasks.php?message=Failed+to+delete+task!&message_type=error");
+        header("Location: manage_tasks.php?message=Failed+to+delete+task!&message_type=error");
     }
 
     $stmt->close();
 } else {
     // Redirect to manage_tasks.php with error message if ID is not valid
-    header("Location: mange_tasks.php?message=Invalid+task+ID!&message_type=error");
+    header("Location: manage_tasks.php?message=Invalid+task+ID!&message_type=error");
 }
 
 $conn->close();

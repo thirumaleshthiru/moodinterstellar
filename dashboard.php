@@ -1,9 +1,9 @@
 <?php
 session_start();
-include 'db.php'; // Include the database connection
+include 'db.php';  
 
-// Check if user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'admin') {
+ 
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'user') {
     header("Location: login.php");
     exit();
 }
@@ -25,8 +25,8 @@ function generateFooter() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <!-- Bootstrap CSS -->
+    <title>Dashboard</title>
+    
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -35,7 +35,7 @@ function generateFooter() {
     <?php generateNavbar(); ?>
 
     <div class="container mt-4">
-        <h2>Admin Dashboard</h2>
+        <h2> Dashboard</h2>
         <div class="row">
             <div class="col-md-3 mb-3">
                 <div class="list-group">
